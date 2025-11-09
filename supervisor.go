@@ -20,7 +20,7 @@ type Supervisor struct {
 	options  Options
 	services map[string]ServiceFunc
 	wg       sync.WaitGroup
-	mu       sync.Mutex
+	mu       sync.RWMutex
 	context  context.Context
 	cancel   context.CancelFunc
 	running  bool
@@ -116,10 +116,15 @@ func (s *Supervisor) Run() {
 		return
 	}
 	s.running = true
+
+	services := make(map[string]ServiceFunc, len(s.services))
+	for name, fn := range s.services {
+		services[name] = fn
+	}
 	s.mu.Unlock()
 
 	// Start all registered services
-	for name, fn := range s.services {
+	for name, fn := range services {
 		s.wg.Add(1)
 		go s.runService(s.context, name, fn)
 	}
