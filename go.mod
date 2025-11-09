@@ -1,3 +1,3 @@
 module github.com/elum-utils/supervisor
 
-go 1.20.0
+go 1.20
