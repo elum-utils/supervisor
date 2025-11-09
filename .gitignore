@@ -1,0 +1,42 @@
+# Binaries
+/bin/
+/out/
+/dist/
+
+# Go-specific
+*.exe
+*.test
+*.prof
+*.out
+
+# IDE/Editor
+/.idea/
+*.swp
+*.swo
+*~
+
+# macOS
+.DS_Store
+._*
+.Spotlight-V100
+.Trashes
+
+# Dependency directories
+/vendor/
+/pkg/
+
+# Logs
+*.log
+
+# Test and coverage
+/coverage.txt
+/.cover/
+*.coverprofile
+
+# Environment files
+.env
+.env.local
+
+# Docker
+Dockerfile
+*.dockerignore
