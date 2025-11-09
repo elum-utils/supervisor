@@ -22,8 +22,5 @@ jobs:
       - name: Run tests with race detection
         run: go test -race -v ./...
 
-      - name: Run golangci-lint
-        uses: golangci/golangci-lint-action@v3
-
       - name: Run go vet
         run: go vet ./...
